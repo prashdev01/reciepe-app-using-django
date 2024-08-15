@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block start %}
+<div class="navbar navbar-expand-lg navbar-light bg-ligh">
+
+    <a class="navbar-brand"  href="/">Home</a>
+    <a class="navbar-brand"  href="/contact">contact</a>
+</div>
+
+<form class='col-5 mx-auto card p-3 shadow-lg' method="post" enctype = "multipart/form-data">
+   {% csrf_token %}
+    <h2>Update Reciepe</h2>
+    <hr>
+    <div class="form-group">
+      <label for="exampleInputEmail1"class='form-label' >Reciepe Name</label>
+      <input name="reciepe_name" value="{{reciepe.reciepe_name}}"  type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1" class='form-label'>Reciepe Descriptions</label>
+        <textarea class="form-control"  name="reciepe_description" id="exampleFormControlTextarea1" required>{{reciepe.reciepe_description}} </textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1" class='form-label'>Reciepe Image</label>
+        <input type="file" name="reciepe_image" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Update Reciepe</button>
+  </form>
+
+
+{% endblock  %}

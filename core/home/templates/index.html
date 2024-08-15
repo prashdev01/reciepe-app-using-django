@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="navbar navbar-expand-lg navbar-light bg-ligh">
+
+    <a class="navbar-brand"  href="/about">About</a>
+    <a class="navbar-brand"  href="/contact">contact</a>
+</div>
+<div class="container">
+    <table  class="table table-striped table-dark">
+        <tr>
+            <th>Sr.NO</th>
+            <th>Name</th>
+              <th>Age</th>
+              <th>can vote?</th>
+              <th>cool meter</th>
+            </tr>
+            {% for people in peoples %}
+            <tr>
+                <td> {{forloop.counter}} </td>
+                <td> {{people.name}} </td>
+                <td>{{people.age}}</td>
+                <td> {% if people.age >= 18 %} 👍 {% else %} 👎 {% endif %} </td>
+                <td> {% if people.age >= 10 %} this is awesome {% else %} this is not good {% endif %} </td>
+                {% endfor %}
+            </tr>
+        </table>
+        
+        {{text|truncatechars:80}}
+        <hr>
+        <p> {% if "cocumber" in vegitables  %} Yes the product is availble in cart 
+            {% elif "tomato" in vegitables %} Yes the product is availble in cart
+            {% else %} NO, the product is not availble in cart
+            {% endif %} </p>
+        </div>
+        <script>
+            console.log("this is django printed using javascript")
+        </script>
+    </body>
+    </html>    
+{% endblock  %}
