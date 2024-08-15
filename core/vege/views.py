@@ -3,12 +3,13 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import *
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
 
-
+@login_required(login_url="/login/")
 def recipies(request):
     if request.method == 'POST':
         data = request.POST
@@ -37,7 +38,7 @@ def recipies(request):
     return render(request,'recipies.html' ,context)
 
 
-
+@login_required(login_url="/login/")
 def update_reciepe(request,id):
     queryset = Reciepe.objects.get(id=id)
     data = request.POST
@@ -59,7 +60,7 @@ def update_reciepe(request,id):
     return render(request,'update_reciepe.html',context)
 
 
-
+@login_required(login_url="/login/")
 def delete_reciepe(request,id):
     queryset = Reciepe.objects.get(id=id)
     queryset.delete()
@@ -86,6 +87,9 @@ def login_page(request):
         
     return render(request,'login.html')
 
+def logout_page(request):
+    logout(request)
+    return redirect('/login/')
 
 def register_page(request):
     if request.method == "POST":
