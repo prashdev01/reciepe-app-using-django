@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import *
 from django.contrib import messages
+from django.contrib.auth import authenticate,login
 # Create your views here.
 
 
@@ -67,7 +68,23 @@ def delete_reciepe(request,id):
 
 
 def login_page(request):
-        return render(request,'login.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password =  request.POST.get('password')
+        
+        if not User.objects.filter(username=username).exists():
+            messages.error(request,"invalid username")
+            return redirect('/login/')
+        user = authenticate(username=username, password=password)
+        
+        if user is None:
+            messages.error(request,"invalid password or username")
+            return redirect('/login/')
+        else:
+            login(request,user)
+            return redirect('/recipies/')
+        
+    return render(request,'login.html')
 
 
 def register_page(request):
