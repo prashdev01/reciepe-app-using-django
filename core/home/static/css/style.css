@@ -1,0 +1,36 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1, h2 {
+    font-weight: 700;
+    color: #333;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: #555;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.btn-outline-success, .btn-outline-primary {
+    border-width: 2px;
+    font-weight: 600;
+}
+
+#social-media i {
+    color: #333;
+    transition: color 0.3s;
+}
+
+#social-media i:hover {
+    color: #007bff;
+}

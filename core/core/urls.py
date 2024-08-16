@@ -19,6 +19,7 @@ from django.urls import path
 from django.conf.urls.static import static
 from home.views import *
 from vege.views import *
+from qrcode.views import *
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -33,6 +34,7 @@ urlpatterns = [
     path('login/', login_page, name='login_page'),
     path('register/', register_page, name='register_page'),
     path('logout/', logout_page, name='logout_page'),
+    path('qr_gen/', qr_gen, name='qr_gen'),
 ]
 
 

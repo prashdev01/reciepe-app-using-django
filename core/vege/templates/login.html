@@ -2,13 +2,13 @@
 {% block start %}
 <body class="bg-light">
 
-    <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="container d-flex justify-content-center align-items-center vh-100 mt-5">
         <div class="card p-4 shadow-sm" style="width: 100%; max-width: 400px;">
             <h3 class="text-center mb-4">Login</h3>
-            <form method="POST">
+            <form method="POST" >
                 {% csrf_token %}
                 {% if messages %}
-                <div class="alert alert-primary" role="alert">
+                <div class="alert alert-warning" role="alert">
                     {% for message in messages %}
                         {{ message }}
                     {% endfor %}
@@ -27,7 +27,7 @@
                     <label class="form-check-label" for="remember">Remember me</label>
                 </div>
                 <p> Already have account? <a href='/register/'> Register </p>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <button type="submit" class="btn btn-warning w-100">Login</button>
             </form>
 
             <div class="text-center mt-3">
