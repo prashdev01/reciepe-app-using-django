@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<div class="hero-section">
+    <div class="col-5 mx-auto card p-3 shadow-lg mt-5" style="background-color: rgba(240, 248, 255, 0.205);border-radius: 10px; color:white">
+        <H1 class="text-info">QR CODE generater!</H1>
+        <div class="form">
+            <form  method="post" name="url" class="form-group">
+                {% csrf_token %}
+                <label for="url"> ENTER URL: </label>
+                <input class="input" type="url" name="url" id="url" placeholder="Paste the url Here" required>
+                <button class="button" type="submit">
+                    <span class="button-content">Generat QR Code </span>
+                </button>
+                
+            </form>
+        </div>
+    </div>
+</div>
+<div class="card-1" style="width: 18rem;">
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+{% if qr_code_image %}
+    <h2>Your QR Code</h2>
+    <img src="{{ qr_code_image }}" alt="QR Code">
+    <br>
+    <a href="{{ qr_code_image }}" download="{{ file_name }}">
+        <button>Download QR Code</button>
+    </a>
+{% endif %}
+</div>
+{% endblock  %}

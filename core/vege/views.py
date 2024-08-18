@@ -17,9 +17,6 @@ def recipies(request):
         reciepe_name =  data.get('reciepe_name')
         reciepe_description =  data.get('reciepe_description')
         
-        print(reciepe_name)
-        print(reciepe_description)
-        print(reciepe_image)
         
         Reciepe.objects.create(
             reciepe_name = reciepe_name,
@@ -29,7 +26,7 @@ def recipies(request):
         return redirect('/recipies/')
     queryset = Reciepe.objects.all()
     if request.GET.get('search'):
-        queryset = queryset.filter(reciepe_image__icontains = request.GET.get('search'))
+        queryset = queryset.filter(reciepe_name__icontains = request.GET.get('search'))
         
         
     context = {'reciepes':queryset}

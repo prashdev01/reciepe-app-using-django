@@ -42,7 +42,7 @@ EXTERNAL_APPS =[
     'accounts',
     'home',
     'vege',
-    'qrcode'
+    'qr_app',   
 ]
 INSTALLED_APPS = EXTERNAL_APPS + INSTALLED_APPS
 
